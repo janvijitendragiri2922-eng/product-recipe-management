@@ -52,7 +52,7 @@ export default function Home() {
   const [activePage, setActivePage] = useState<"dashboard"|"product" | "recipe">("dashboard");
 
   // RECIPE STATES
-  const [recipes, setRecipes] = useState<Recipe[]>([]);
+  const {recipes, setRecipes} = useAppContext();
 
   const [showRecipeForm, setShowRecipeForm] = useState(false);
   const [editingRecipe, setEditingRecipe] = useState<Recipe | undefined>(
@@ -133,10 +133,17 @@ export default function Home() {
 
   // delete product
   async function handleDelete(id: number) {
+    try{
     await deleteProduct(id);
+    setProducts((prevProducts:Product[])=>
+                                prevProducts.filter((product)=>product.id !== id)
+                );
     setFilteredProducts((prevProducts) =>
       prevProducts.filter((product) => product.id !== id),
     );
+} catch (error){
+  console.error("Product delete failed:",error);
+}
   }
   //add product
   async function handleAddProduct(product: {
@@ -157,8 +164,9 @@ export default function Home() {
       id: nextProductId,
     };
 
-    setFilteredProducts((prevProducts) => [completeProduct, ...prevProducts]);
-     setProducts((prev:Product[]) => [completeProduct, ...prev]);
+   
+     setProducts((prevProducts:Product[]) => [completeProduct, ...prevProducts]);
+      setFilteredProducts((prevProducts) => [completeProduct, ...prevProducts]);
 
     setNextProductId((prev) => prev! + 1);
 
@@ -254,7 +262,7 @@ export default function Home() {
   async function handleRecipeSearch(query: string) {
     try {
       if (!query.trim()) {
-        await searchRecipes("");
+        await loadRecipes(recipePage);
         return;
       }
       const results = await searchRecipes(query);

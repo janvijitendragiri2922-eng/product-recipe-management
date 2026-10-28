@@ -37,9 +37,10 @@ export default function UpdateProduct({
   }
   return (
     <form onSubmit={handleSubmit}>
+      <div className="product-card">
       <h2>Edit Product</h2>
       <br />
-      <label>Product Name</label>
+      <label>Product Name:</label>
       <input
         className="input"
         type="text"
@@ -47,7 +48,7 @@ export default function UpdateProduct({
         onChange={(e) => setTitile(e.target.value)}
         placeholder="Enter Product Name..."
       />
-      <label>Product Price</label>
+      <label>Product Price:</label>
       <input
         className="input"
         type="number"
@@ -55,7 +56,7 @@ export default function UpdateProduct({
         onChange={(e) => setPrice(Number(e.target.value))}
         placeholder="Product Price..."
       />
-      <label>Product URL</label>
+      <label>Product URL:</label>
       <input
         className="input"
         type="text"
@@ -63,7 +64,7 @@ export default function UpdateProduct({
         onChange={(e) => setThumbnail(e.target.value)}
         placeholder="Product URL..."
       />
-      <label>Product Description</label>
+      <label>Product Description:</label>
       <input
         className="input"
         type="text"
@@ -71,7 +72,7 @@ export default function UpdateProduct({
         onChange={(e) => setDescription(e.target.value)}
         placeholder=" Product Description..."
       />
-      <label>Product Rating</label>
+      <label>Product Rating:</label>
       <input
         className="input"
         type="number"
@@ -79,7 +80,7 @@ export default function UpdateProduct({
         onChange={(e) => setRating(Number(e.target.value))}
         placeholder=" Product Rating..."
       />
-      <label>Product Stock</label>
+      <label>Product Stock:</label>
       <input
         className="input"
         type="number"
@@ -87,7 +88,7 @@ export default function UpdateProduct({
         onChange={(e) => setStock(Number(e.target.value))}
         placeholder=" Product Stock..."
       />
-      <label>Product Category</label>
+      <label>Product Category:</label>
       <input
         className="input"
         type="text"
@@ -102,6 +103,7 @@ export default function UpdateProduct({
       <button type="button" onClick={onCancel} className="cancel-btn">
         Cancel
       </button>
+      </div>
     </form>
   );
 }

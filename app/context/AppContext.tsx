@@ -1,12 +1,15 @@
 "use client";
 import { createContext, useContext, useState } from "react";
+import type { Product } from "./types/product";
+import type { Recipe, RecipeInput } from "./types/recipe";
+
 
 export const AppContext = createContext<any>(null);
 
 export function AppProvider({ children }: any) {
   const [username, setUsername] = useState("");
-  const [products,setProducts] = useState([]);
-  const [recipes,setRecipes] = useState([]);
+  const [products,setProducts] = useState<Product[]>([]);
+  const [recipes,setRecipes] = useState<Recipe[]>([]);
   return (
     <AppContext.Provider value={{
                       username, 

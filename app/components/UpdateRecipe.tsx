@@ -80,24 +80,27 @@ export default function UpdateRecipe({
   }
 
   return (
-    <form onSubmit={handleSubmit} className="recipe-form-buttons">
+    <form onSubmit={handleSubmit}>
+      <div className="product-card">
       <h2>Edit Recipe</h2>
-      <div>
+     
         <br />
-        <label>Recipe Name</label>
+        <label>Recipe Name:</label>
 
         <input
+         className="input"
           type="text"
           value={name}
           onChange={(event) => setName(event.target.value)}
           placeholder="Enter recipe name"
         />
-      </div>
+   
 
-      <div className="form-group">
-        <label>Image URL</label>
+
+        <label>Image URL:</label>
 
         <input
+        className="input"
           type="url"
           value={image}
           onChange={(event) => setImage(event.target.value)}
@@ -107,24 +110,25 @@ export default function UpdateRecipe({
         {image && (
           <img src={image} alt="Recipe Preview" className="recipe-preview" />
         )}
-      </div>
+     
 
-      <div className="form-row">
-        <div className="form-group">
-          <label>Cuisine</label>
+     
+       
+          <label>Cuisine:</label>
 
           <input
+          className="input"
             type="text"
             value={cuisine}
             onChange={(event) => setCuisine(event.target.value)}
             placeholder="Indian"
           />
-        </div>
+       
 
-        <div className="form-group">
-          <label>Difficulty</label>
+          <label>Difficulty:</label>
 
           <select
+          className="input"
             value={difficulty}
             onChange={(event) => setDifficulty(event.target.value)}
           >
@@ -132,14 +136,13 @@ export default function UpdateRecipe({
             <option>Medium</option>
             <option>Hard</option>
           </select>
-        </div>
-      </div>
+     
 
-      <div className="form-row">
-        <div className="form-group">
-          <label>Rating</label>
+      
+          <label>Rating:</label>
 
           <input
+           className="input"
             type="number"
             value={rating}
             onChange={(event) => setRating(Number(event.target.value))}
@@ -148,72 +151,69 @@ export default function UpdateRecipe({
             step="0.1"
             placeholder="Enter rating"
           />
-        </div>
+       
 
-        <div className="form-group">
-          <label>Servings</label>
+     
+          <label>Servings:</label>
 
           <input
+           className="input"
             type="number"
             value={servings}
             onChange={(event) => setServings(event.target.value)}
           />
-        </div>
+      
 
-        <div className="form-group">
-          <label>Calories</label>
+          <label>Calories:</label>
 
           <input
+           className="input"
             type="number"
             value={calories}
             onChange={(event) => setCalories(event.target.value)}
           />
-        </div>
-      </div>
+        
 
-      <div className="form-row">
-        <div className="form-group">
-          <label>Prep Time</label>
+          <label>Prep Time:</label>
 
           <input
+           className="input"
             type="number"
             value={prepTime}
             onChange={(event) => setPrepTime(event.target.value)}
           />
-        </div>
-
-        <div className="form-group">
-          <label>Cook Time</label>
+       
+          <label>Cook Time:</label>
 
           <input
+           className="input"
             type="number"
             value={cookTime}
             onChange={(event) => setCookTime(event.target.value)}
           />
-        </div>
-      </div>
-
-      <div className="form-group">
-        <label>Ingredients</label>
+      
+   
+        <label>Ingredients:</label>
 
         <textarea
+         className="input"
           value={ingredients}
           onChange={(event) => setIngredients(event.target.value)}
           placeholder="Tomato, Onion, Salt"
           rows={4}
         />
-      </div>
+     
 
-      <div className="form-group">
-        <label>Instructions</label>
+        <label>Instructions:</label>
 
         <textarea
+         className="input"
           value={instructions}
           onChange={(event) => setInstructions(event.target.value)}
           placeholder="Enter each instruction on a new line"
           rows={6}
         />
-      </div>
+    
 
       <button type="submit" className="edit-btn">
         Update Recipe
@@ -222,6 +222,7 @@ export default function UpdateRecipe({
       <button type="button" onClick={onCancel} className="cancel-btn">
         Cancel
       </button>
+      </div>
     </form>
   );
 }
