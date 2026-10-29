@@ -13,7 +13,7 @@ export default async function RecipeDetailsPage({
 }: RecipeDetailsPageProps) {
   const { id } = await params;
   const recipe = await getRecipeById(id);
-  console.log("Recipe data:", recipe);
+  console.log("Recipe all data:", recipe);
 
   return (
     <main>
